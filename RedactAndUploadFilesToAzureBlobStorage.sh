@@ -4,15 +4,16 @@
 # IP Addresses are redacted for privacy.
 # Requires AzCopy: https://aka.ms/AzCopyLinux
 
-
 # Copy original logs to archival folder.
-copy /home/minecraft/*.gz /home/minecraft/logs/originals/
+cp /home/minecraft/logs/*.gz /home/minecraft/logs/originals/
+cp /home/minecraft/logs/latest.log /home/minecraft/logs/originals/
 
 # Copy working logs to working folder.
-copy /home/minecraft/*.gz /home/minecraft/logs/parsed/
+cp /home/minecraft/logs/*.gz /home/minecraft/logs/parsed/
+cp /home/minecraft/logs/latest.log /home/minecraft/logs/parsed/
 
 # Extract logs from GZip files.
-gunzip /home/minecraft/logs/parsed/*.gz
+gunzip -f /home/minecraft/logs/parsed/*.gz
 
 # Remove IP addresses.
 sed -r 's/(\b[-1-9]{1,3}\.){3}[0-9]{1,3}\b'/REDACTED/ /home/minecraft/logs/parsed/*.log -i
