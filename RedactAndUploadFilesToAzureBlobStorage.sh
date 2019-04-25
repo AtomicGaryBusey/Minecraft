@@ -16,7 +16,7 @@ cp /home/minecraft/logs/latest.log /home/minecraft/logs/parsed/
 gunzip -f /home/minecraft/logs/parsed/*.gz
 
 # Remove IP addresses.
-sed -r 's/(\b[-1-9]{1,3}\.){3}[0-9]{1,3}\b'/REDACTED/ /home/minecraft/logs/parsed/*.log -i
+sed -i -e 's/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/REDACTED/g' /home/minecraft/logs/parsed/*.log
 
 # Upload new logs to Azure Storage.
 azcopy --source /home/minecraft/logs/parsed/ --destination https://account.blob.core.windows.net/blobcontainer -dest-sas "<SASURI>" --recursive --quiet
