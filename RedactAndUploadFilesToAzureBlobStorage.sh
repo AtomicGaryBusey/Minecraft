@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script was used to push Minecraft logs from a Linux host to Azure Blob Storage to be served on a website.
-# IP Addresses are redacted for privacy.
+# IP Addresses are redacted for privacy reason.
 # Requires AzCopy: https://aka.ms/AzCopyLinux
 
 # Copy original logs to archival folder.
